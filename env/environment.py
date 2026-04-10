@@ -1,11 +1,12 @@
-import random
+from typing import Tuple, Dict
 from .models import Observation, Action, Reward, Ticket
 from .tasks import TASKS
+import random
+
 
 class SupportEnv:
 
     def __init__(self, seed=42):
-        self.seed = seed
         random.seed(seed)
         self.max_steps = 15
 
@@ -18,12 +19,11 @@ class SupportEnv:
             ],
             "steps": 0,
             "satisfaction": 1.0,
-            "task_type": task_type
         }
 
         return self._get_obs()
 
-    def step(self, action: Action):
+    def step(self, action: Action) -> Tuple[Observation, Reward, bool, Dict]:
         self.state_data["steps"] += 1
         reward = 0.0
 
@@ -35,7 +35,6 @@ class SupportEnv:
                 elif action.type == "escalate":
                     reward -= 0.2
 
-        # SLA penalties
         for t in self.state_data["tickets"]:
             if not t["resolved"]:
                 t["sla"] -= 1
@@ -50,7 +49,12 @@ class SupportEnv:
 
         reward = max(min(reward, 1.0), -1.0)
 
-        return self._get_obs(), Reward(score=reward, feedback="dense reward"), done, {}
+        return (
+            self._get_obs(),
+            Reward(score=reward, feedback="dense reward"),
+            done,
+            {}
+        )
 
     def state(self):
         return self.state_data

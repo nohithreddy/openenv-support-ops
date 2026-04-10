@@ -1,6 +1,7 @@
 from pydantic import BaseModel
 from typing import List, Optional, Literal
 
+
 class Ticket(BaseModel):
     id: int
     text: str
@@ -8,15 +9,18 @@ class Ticket(BaseModel):
     sla: int
     resolved: bool
 
+
 class Observation(BaseModel):
     tickets: List[Ticket]
     steps: int
     satisfaction: float
 
+
 class Action(BaseModel):
     type: Literal["close", "escalate", "reply"]
     ticket_id: int
     message: Optional[str] = None
+
 
 class Reward(BaseModel):
     score: float
