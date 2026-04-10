@@ -1,31 +1,32 @@
-<<<<<<< HEAD
-FROM python:3.10
+# Base image
+FROM python:3.10-slim
 
-WORKDIR /app
-COPY . .
-
-RUN pip install -r requirements.txt
-
-CMD ["streamlit", "run", "ui/dashboard.py", "--server.port=7860", "--server.address=0.0.0.0"]
-=======
-FROM python:3.13.5-slim
-
+# Set working directory
 WORKDIR /app
 
+# Install system dependencies
 RUN apt-get update && apt-get install -y \
-    build-essential \
-    curl \
     git \
+    git-lfs \
+    ffmpeg \
+    libsm6 \
+    libxext6 \
+    cmake \
+    rsync \
+    libgl1 \
     && rm -rf /var/lib/apt/lists/*
 
-COPY requirements.txt ./
-COPY src/ ./src/
+# Copy all files
+COPY . .
 
-RUN pip3 install -r requirements.txt
+# Upgrade pip
+RUN pip install --no-cache-dir --upgrade pip
 
-EXPOSE 8501
+# Install Python dependencies
+RUN pip install --no-cache-dir -r requirements.txt
 
-HEALTHCHECK CMD curl --fail http://localhost:8501/_stcore/health
+# Expose port (HF Spaces uses 7860)
+EXPOSE 7860
 
-ENTRYPOINT ["streamlit", "run", "src/streamlit_app.py", "--server.port=8501", "--server.address=0.0.0.0"]
->>>>>>> d2337f3982153ea63e4548a918d657b5569ef535
+# Start FastAPI server (MANDATORY for OpenEnv validation)
+CMD ["uvicorn", "inference:app", "--host", "0.0.0.0", "--port", "7860"]
