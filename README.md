@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # 🚀 SupportOpsEnv — Multi-Ticket Customer Support Simulation
 
 ## 📌 Overview
@@ -148,3 +149,25 @@ openenv validate .
 ## 🏁 Conclusion
 
 SupportOpsEnv bridges the gap between **static benchmarks and real-world agent systems**, providing a robust testbed for evaluating AI in operational environments.
+=======
+---
+title: Support Ops Env
+emoji: 🚀
+colorFrom: red
+colorTo: red
+sdk: docker
+app_port: 8501
+tags:
+- streamlit
+pinned: false
+short_description: Multi-ticket customer support simulation with SLA and reward
+license: mit
+---
+
+# Welcome to Streamlit!
+
+Edit `/src/streamlit_app.py` to customize this app to your heart's desire. :heart:
+
+If you have any questions, checkout our [documentation](https://docs.streamlit.io) and [community
+forums](https://discuss.streamlit.io).
+>>>>>>> d2337f3982153ea63e4548a918d657b5569ef535

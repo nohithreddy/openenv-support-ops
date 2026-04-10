@@ -1,6 +1,12 @@
+<<<<<<< HEAD
 pydantic
 openai
 fastapi
 uvicorn
 streamlit
 pydantic
+=======
+altair
+pandas
+streamlit
+>>>>>>> d2337f3982153ea63e4548a918d657b5569ef535
