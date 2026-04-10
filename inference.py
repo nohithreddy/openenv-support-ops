@@ -1,9 +1,14 @@
 from fastapi import FastAPI
 from env.environment import SupportEnv
 
-app = FastAPI()
+app = FastAPI(root_path="")
 
 env = SupportEnv()
+
+
+@app.get("/")
+def home():
+    return {"status": "running"}
 
 
 @app.post("/reset")
