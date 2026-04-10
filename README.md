@@ -1,3 +1,12 @@
+---
+title: SupportOps Environment
+emoji: 📊
+colorFrom: blue
+colorTo: purple
+sdk: streamlit
+app_file: app.py
+pinned: false
+---
 <<<<<<< HEAD
 # 🚀 SupportOpsEnv — Multi-Ticket Customer Support Simulation
 
