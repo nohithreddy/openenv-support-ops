@@ -4,3 +4,4 @@ websockets>=10.4
 fastapi
 pydantic
 numpy
+openai

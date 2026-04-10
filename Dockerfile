@@ -28,5 +28,5 @@ RUN pip install --no-cache-dir -r requirements.txt
 # Expose port (HF Spaces uses 7860)
 EXPOSE 7860
 
-# Start FastAPI server (MANDATORY for OpenEnv validation)
-CMD ["python", "-m", "uvicorn", "inference:app", "--host", "0.0.0.0", "--port", "7860"]
+# Run inference.py as the agent script (OpenEnv runner executes this)
+CMD ["python", "inference.py"]
