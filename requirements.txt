@@ -1,12 +1,6 @@
-<<<<<<< HEAD
-pydantic
-openai
+streamlit==1.56.0
+uvicorn>=0.14.0
+websockets>=10.4
 fastapi
-uvicorn
-streamlit
 pydantic
-=======
-altair
-pandas
-streamlit
->>>>>>> d2337f3982153ea63e4548a918d657b5569ef535
+numpy
