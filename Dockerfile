@@ -5,4 +5,4 @@ COPY . .
 
 RUN pip install -r requirements.txt
 
-CMD ["python", "baseline/run_baseline.py"]
+CMD ["streamlit", "run", "ui/dashboard.py", "--server.port=7860", "--server.address=0.0.0.0"]

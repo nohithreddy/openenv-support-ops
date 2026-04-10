@@ -2,3 +2,5 @@ pydantic
 openai
 fastapi
 uvicorn
+streamlit
+pydantic
