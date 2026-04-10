@@ -1,0 +1,9 @@
+name: support-ops-env
+description: Multi-ticket support system simulation
+
+entrypoint: env.environment:SupportEnv
+
+tasks:
+  - id: easy
+  - id: medium
+  - id: hard
